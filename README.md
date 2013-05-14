@@ -10,8 +10,8 @@ For more information on the meaning of these metrics, please visit [docs.basho.c
 
 | Riak Stat     | New Relic Stat | Unit of Measure |
 | ------------ | ------------- | ------------ |
-| vnode_gets | VNode/Gets | Operations/Seconds |
-| vnode_puts | VNode/Puts | Operations/Seconds |
+| vnode_gets | VNode/Gets/Rate | Operations/Seconds |
+| vnode_puts | VNode/Puts/Rate | Operations/Seconds |
 | vnode_gets_total | VNode/Gets/Total | Operations |
 | vnode_puts_total | VNode/Puts/Total | Operations |
 | vnode_index_reads | VNode/Index/Reads | Indexes/Seconds |
@@ -24,17 +24,17 @@ For more information on the meaning of these metrics, please visit [docs.basho.c
 | vnode_index_deletes_postings | VNode/Index/Deletes/Postings | Postings/Seconds |
 | vnode_index_writes_postings_total | VNode/Index/Writes/Postings/Total | Postings |
 | vnode_index_deletes_postings_total | VNode/Index/Deletes/Postings/Total | Postings |
-| read_repairs | Read Repairs | Repairs/Seconds |
+| read_repairs | Read Repairs/Rate | Repairs/Seconds |
 | read_repairs_total | Read Repairs/Total | Repairs |
 | coord_redirs_total | Node/Redirects/Total | Redirects |
-| node_gets | Node/Gets | Operations/Seconds |
+| node_gets | Node/Gets/Rate | Operations/Seconds |
 | node_gets_total | Node/Gets/Total | Operations |
 | node_get_fsm_time_mean | Node/Get/FSM/Time/Mean | Microseconds |
 | node_get_fsm_time_median | Node/Get/FSM/Time/Median | Microseconds |
 | node_get_fsm_time_95 | Node/Get/FSM/Time/95 | Microseconds |
 | node_get_fsm_time_99 | Node/Get/FSM/Time/99 | Microseconds |
 | node_get_fsm_time_100 | Node/Get/FSM/Time/100 | Microseconds |
-| node_puts | Node/Puts | Operations/Seconds |
+| node_puts | Node/Puts/Rate | Operations/Seconds |
 | node_puts_total | Node/Puts/Total | Operations |
 | node_put_fsm_time_mean | Node/Put/FSM/Time/Mean | Microseconds |
 | node_put_fsm_time_median | Node/Put/FSM/Time/Median | Microseconds |
@@ -53,17 +53,17 @@ For more information on the meaning of these metrics, please visit [docs.basho.c
 | node_get_fsm_objsize_100 | Node/Get/FSM/ObjectSize/100 | Bytes |
 | precommit_fail | Failures/Pre-commit | Failures |
 | postcommit_fail | Failures/Post-commit | Failures |
-| cpu_nprocs | CPU/Processes | Processes |
+| cpu_nprocs | CPU/Processes/Total | Processes |
 | cpu_avg1 | CPU/Processes/Average/1Minute | Processes/Seconds |
 | cpu_avg5 | CPU/Processes/Average/5Minute | Processes/Seconds |
 | cpu_avg15 | CPU/Processes/Average/15Minute | Processes/Seconds |
-| sys_process_count | Sys/Processes | Processes |
+| sys_process_count | Sys/Processes/Total | Processes |
 | pbc_connects_total | PBC/Connections/Total | Connections |
-| pbc_connects | PBC/Connections | Connections/Seconds |
+| pbc_connects | PBC/Connections/Rate | Connections/Seconds |
 | pbc_active | PBC/Connections/Active | Connections |
 | executing_mappers | Mappers/Executing | Mappers |
-| mem_total | Memory/Available | Bytes |
-| memory_total | Memory/Allocated | Bytes |
+| mem_total | Memory/Available/Total | Bytes |
+| memory_total | Memory/Allocated/Total | Bytes |
 | mem_allocated | Memory/Allocated/Node | Bytes |
 | memory_processes | Memory/Allocated/Processes | Bytes |
 | memory_system | Memory/Allocated/System | Bytes |
@@ -76,7 +76,7 @@ For more information on the meaning of these metrics, please visit [docs.basho.c
 | ignored_gossip_total | Gossip/Ignored  | Messages |
 | gossip_received | Gossip/Received | Messages |
 | rings_reconciled_total | Rings/Reconciled/Total | Rings |
-| rings_reconciled | Rings/Reconciled | Rings/Seconds |
+| rings_reconciled | Rings/Reconciled/Rate | Rings/Seconds |
 | handoff_timeouts | Hand-off Timeouts | Timeouts |
 | converge_delay_min | Converge/Delay/Min | Microseconds |
 | converge_delay_max | Converge/Delay/Max | Microseconds |
