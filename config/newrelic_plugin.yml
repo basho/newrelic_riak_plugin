@@ -16,7 +16,7 @@ newrelic:
   #
   # Update with your New Relic account license key:
   #
-  license_key: 'b4d28dd87e2cdb31dbb66344c1e48bbc5abad05a'
+  license_key: 'put_your_license_key_here'
   #
   # Set to '1' for verbose output, remove for normal output.
   # All output goes to stdout/stderr.
