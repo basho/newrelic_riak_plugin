@@ -1,10 +1,27 @@
-#New Relic Riak Agent
+#Title: New Relic Riak Agent
 
+##Description:
+The New Relic Riak Agent serves node statistics of a Riak Node to the New Relic APM System via the web API available for plugins. The plugin is written in Ruby, with the code available on github under Apache 2.0 License.
 
-A New Relic Riak Agent.
+##Plugin Requirements:
 
+   * Installed [Erlang v R15B01](http://docs.basho.com/riak/1.2.0/tutorials/installation/Installing-Erlang/#Installing-on-GNU-Linux).
+   * Install [Riak](http://docs.basho.com/riak/latest/tutorials/installation/).
+   * Ruby >= 1.8.7
+   * Rubygems >= 1.8
+   * Bundler >= 1.3.0
+   * Git >= 1.8
 
-##Summary of Metrics
+##Installation:
+
+   * Download the [Riak Plugin](https://github.com/newrelic-platform/basho_riak_plugin) to the folder you'd like to execute it from.
+   * Navigate to the folder that the plugin is downloaded to.
+   * Edit the config/newrelic_plugin.yml file and add your New Relic License key where the value "YOUR_LICENSE_KEY_HERE" is at.
+   * Edit the riak_agent.rb file and change the GUID to something unique to your application (it's set by default to 'com.basho.riak_agent')
+   * Run 'bundle exec ./riak_agent.rb' or './riak_agent.rb' to start the plugin and start measuring stats against the executing Riak node.
+   * That's it, you'll now see metrics start to trickle into your dashboard with your executing plugin.
+
+##Summary of Metrics:
 
 For more information on the meaning of these metrics, please visit [docs.basho.com](http://docs.basho.com/riak/1.3.1/references/apis/http/HTTP-Status/).
 
