@@ -14,7 +14,7 @@ The New Relic Riak Agent serves node statistics of a Riak Node to the New Relic 
 
 ##Installation:
 
-   * Download the [Riak Plugin](https://github.com/newrelic-platform/basho_riak_plugin) to the folder you'd like to execute it from.
+   * Download this repository to the folder you'd like to execute it from.
    * Navigate to the folder that the plugin is downloaded to.
    * Edit the config/newrelic_plugin.yml file and add your New Relic License key where the value "YOUR_LICENSE_KEY_HERE" is at.
    * Edit the riak_agent.rb file and change the GUID to something unique to your application (it's set by default to 'com.basho.riak_agent')
