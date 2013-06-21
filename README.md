@@ -16,9 +16,10 @@ The New Relic Riak Agent serves node statistics of a Riak Node to the New Relic 
 
    * Download this repository to the folder you'd like to execute it from.
    * Navigate to the folder that the plugin is downloaded to.
+   * Run `bundle install`
    * Edit the config/newrelic_plugin.yml file and add your New Relic License key where the value "YOUR_LICENSE_KEY_HERE" is at.
    * Edit the riak_agent.rb file and change the GUID to something unique to your application (it's set by default to 'com.basho.riak_agent')
-   * Run 'bundle exec ./riak_agent.rb' or './riak_agent.rb' to start the plugin and start measuring stats against the executing Riak node.
+   * Run `bundle exec ./riak_agent.rb` or `./riak_agent.rb` to start the plugin and start measuring stats against the executing Riak node.
    * That's it, you'll now see metrics start to trickle into your dashboard with your executing plugin.
 
 ##Summary of Metrics:
