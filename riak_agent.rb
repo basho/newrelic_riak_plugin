@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require 'rubygems'
 require 'bundler/setup'
 require 'newrelic_plugin'
@@ -9,10 +10,9 @@ module RiakAgent
 
   class Metric
 
-    attr_accessor :key, :name, :unit, :processor
+    attr_reader :key, :name, :unit
 
     def initialize(key, name, unit)
-      @processor = NewRelic::Processor::EpochCounter.new
       @key = key
       @name = name
       @unit = unit
@@ -130,10 +130,8 @@ module RiakAgent
       results = RestClient.get "http://#{host}:#{port}/stats"
       stats = JSON.parse(results)
 
-      for metric in @metrics
-        report_metric metric.name,
-                      metric.unit,
-                      metric.processor.process(stats[metric.key])
+      @metrics.each do |metric|
+        report_metric(metric.name, metric.unit, stats[metric.key])
       end
 
     end
@@ -142,3 +140,4 @@ module RiakAgent
   NewRelic::Plugin::Setup.install_agent :riak, RiakAgent
   NewRelic::Plugin::Run.setup_and_run
 end
+
