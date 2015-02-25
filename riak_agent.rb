@@ -23,7 +23,7 @@ module RiakAgent
 
   class Agent < NewRelic::Plugin::Agent::Base
     agent_guid 'com.basho.riak_agent'
-    agent_version '0.2.0'
+    agent_version '1.0.1'
     agent_human_labels('Riak') { "#{nodename}" }
     agent_config_options :host, :port, :nodename, :hostname
 

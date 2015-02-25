@@ -5,7 +5,6 @@ The New Relic Riak Agent serves node statistics of a Riak Node to the New Relic 
 
 ##Plugin Requirements:
 
-   * Installed [Erlang v R15B01](http://docs.basho.com/riak/1.2.0/tutorials/installation/Installing-Erlang/#Installing-on-GNU-Linux).
    * Install [Riak](http://docs.basho.com/riak/latest/tutorials/installation/).
    * Ruby >= 1.8.7
    * Rubygems >= 1.8
