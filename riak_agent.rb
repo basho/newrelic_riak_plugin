@@ -5,6 +5,7 @@ require 'bundler/setup'
 require 'newrelic_plugin'
 require 'rest-client'
 require 'json'
+require 'socket'
 
 module RiakAgent
 
@@ -22,11 +23,30 @@ module RiakAgent
 
   class Agent < NewRelic::Plugin::Agent::Base
     agent_guid 'com.basho.riak_agent'
-    agent_version '0.1.0'
-    agent_human_labels('Riak') { "#{host}:#{port}" }
-    agent_config_options :host, :port
+    agent_version '0.2.0'
+    agent_human_labels('Riak') { "#{nodename}" }
+    agent_config_options :host, :port, :nodename, :hostname
 
     def setup_metrics
+
+      self.port ||= 8098
+      self.host ||= "127.0.0.1"
+      unless self.hostname
+        begin
+          self.hostname ||= Socket.gethostname
+        rescue
+          self.hostname = "localhost"
+        end
+      end
+      unless self.nodename
+        begin
+          results = RestClient.get "http://#{self.host}:#{self.port}/stats"
+          stats = JSON.parse(results)
+          self.nodename = stats['nodename']
+        rescue
+          self.nodename = "riak@#{self.hostname}"
+        end
+      end
 
       @metrics = [
         Metric.new('vnode_gets_total', 'VNode/Gets/Total', 'Operations'),
@@ -63,11 +83,11 @@ module RiakAgent
         Metric.new('memory_processes_used', 'Memory/Used/Processes', 'Bytes'),
         Metric.new('consistent_gets_total', 'Consistent/Gets/Total', 'Operations'),
         Metric.new('consistent_puts_total', 'Consistent/Puts/Total', 'Operations'),
-        Metric.new('node_get_fsm_rejected_total', 'Node/Get/Fsm/Rejected/Total', 'Rejections'),
+        Metric.new('node_get_fsm_rejected_total', 'Node/Get/FSM/Rejected/Total', 'Rejections'),
         Metric.new('node_gets_counter_total', 'Node/Gets/Counter/Total', 'Operations'),
         Metric.new('node_gets_map_total', 'Node/Gets/Map/Total', 'Operations'),
         Metric.new('node_gets_set_total', 'Node/Gets/Set/Total', 'Operations'),
-        Metric.new('node_put_fsm_rejected_total', 'Node/Put/Fsm/Rejected/Total', 'Rejections'),
+        Metric.new('node_put_fsm_rejected_total', 'Node/Put/FSM/Rejected/Total', 'Rejections'),
         Metric.new('node_puts_counter_total', 'Node/Puts/Counter/Total', 'Operations'),
         Metric.new('node_puts_map_total', 'Node/Puts/Map/Total', 'Operations'),
         Metric.new('node_puts_set_total', 'Node/Puts/Set/Total', 'Operations'),
@@ -91,9 +111,9 @@ module RiakAgent
         Metric.new('search_query_latency_min', 'Search/Query/Latency/Min', 'Microseconds'),
         Metric.new('search_query_throughput_count', 'Search/Query/Throughput/Total', 'Operations'),
         Metric.new('search_query_throughput_one', 'Search/Query/Throughput/One', 'Operations'),
-        Metric.new('vnode_counter_update_total', 'Vnode/Counter/Update/Total', 'Operations'),
-        Metric.new('vnode_map_update_total', 'Vnode/Map/Update/Total', 'Operations'),
-        Metric.new('vnode_set_update_total', 'Vnode/Set/Update/Total', 'Operations')      
+        Metric.new('vnode_counter_update_total', 'VNode/Counter/Update/Total', 'Operations'),
+        Metric.new('vnode_map_update_total', 'VNode/Map/Update/Total', 'Operations'),
+        Metric.new('vnode_set_update_total', 'VNode/Set/Update/Total', 'Operations')
       ]
     end
 

@@ -17,14 +17,22 @@ The New Relic Riak Agent serves node statistics of a Riak Node to the New Relic 
    * Download this repository to the folder you'd like to execute it from.
    * Navigate to the folder that the plugin is downloaded to.
    * Run `bundle install`
-   * Edit the config/newrelic_plugin.yml file and add your New Relic License key where the value "YOUR_LICENSE_KEY_HERE" is at.
+   * Copy ```config/newrelic_plugin.example.yml``` to ```config/newrelic_plugin.yml```
+   * Edit ```config/newrelic_plugin.yml```, replacing LICENCE with your New Relic License key.
    * Edit the riak_agent.rb file and change the GUID to something unique to your application (it's set by default to 'com.basho.riak_agent')
-   * Run `bundle exec ./riak_agent.rb` or `./riak_agent.rb` to start the plugin and start measuring stats against the executing Riak node.
-   * That's it, you'll now see metrics start to trickle into your dashboard with your executing plugin.
+   * Run `bundle exec ./riak_agent.rb` or `./riak_agent.rb` to start.
+ 
+## Testing
+
+* Create ```newrelic.key``` that just contains your New Relic license key:
+
+		aabbccddeeffgg
+
+* Run ```vagrant up``` ([Vagrant](https://www.vagrantup.com/))
 
 ##Summary of Metrics:
 
-For more information on the meaning of these metrics, please visit [docs.basho.com](http://docs.basho.com/riak/1.3.1/references/apis/http/HTTP-Status/).
+For more information on the meaning of these metrics, please visit [docs.basho.com](http://docs.basho.com/riak/latest/ops/running/nodes/inspecting/).
 
 | Riak Stat     | New Relic Stat | Unit of Measure |
 | ------------ | ------------- | ------------ |
