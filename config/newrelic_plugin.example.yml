@@ -29,3 +29,5 @@ agents:
   riak:
     host: 127.0.0.1
     port: 8098
+    #nodename: 'riak@localhost'
+    #hostname: 'localhost'
