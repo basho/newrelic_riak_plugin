@@ -16,12 +16,12 @@ newrelic:
   #
   # Update with your New Relic account license key:
   #
-  license_key: 'put_your_license_key_here'
+  license_key: 'LICENSE'
   #
   # Set to '1' for verbose output, remove for normal output.
   # All output goes to stdout/stderr.
   #
-  verbose: 1
+  verbose: 0
 #
 # Agent Configuration:
 #
@@ -29,3 +29,5 @@ agents:
   riak:
     host: 127.0.0.1
     port: 8098
+    #nodename: 'riak@localhost'
+    #hostname: 'localhost'

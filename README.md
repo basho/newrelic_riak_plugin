@@ -5,7 +5,6 @@ The New Relic Riak Agent serves node statistics of a Riak Node to the New Relic 
 
 ##Plugin Requirements:
 
-   * Installed [Erlang v R15B01](http://docs.basho.com/riak/1.2.0/tutorials/installation/Installing-Erlang/#Installing-on-GNU-Linux).
    * Install [Riak](http://docs.basho.com/riak/latest/tutorials/installation/).
    * Ruby >= 1.8.7
    * Rubygems >= 1.8
@@ -17,42 +16,35 @@ The New Relic Riak Agent serves node statistics of a Riak Node to the New Relic 
    * Download this repository to the folder you'd like to execute it from.
    * Navigate to the folder that the plugin is downloaded to.
    * Run `bundle install`
-   * Edit the config/newrelic_plugin.yml file and add your New Relic License key where the value "YOUR_LICENSE_KEY_HERE" is at.
+   * Copy ```config/newrelic_plugin.example.yml``` to ```config/newrelic_plugin.yml```
+   * Edit ```config/newrelic_plugin.yml```, replacing LICENCE with your New Relic License key.
    * Edit the riak_agent.rb file and change the GUID to something unique to your application (it's set by default to 'com.basho.riak_agent')
-   * Run `bundle exec ./riak_agent.rb` or `./riak_agent.rb` to start the plugin and start measuring stats against the executing Riak node.
-   * That's it, you'll now see metrics start to trickle into your dashboard with your executing plugin.
+   * Run `bundle exec ./riak_agent.rb` or `./riak_agent.rb` to start.
+ 
+## Testing
+
+* Create ```newrelic.key``` that just contains your New Relic license key:
+
+		aabbccddeeffgg
+
+* Run ```vagrant up``` ([Vagrant](https://www.vagrantup.com/))
 
 ##Summary of Metrics:
 
-For more information on the meaning of these metrics, please visit [docs.basho.com](http://docs.basho.com/riak/1.3.1/references/apis/http/HTTP-Status/).
+For more information on the meaning of these metrics, please visit [docs.basho.com](http://docs.basho.com/riak/latest/ops/running/nodes/inspecting/).
 
 | Riak Stat     | New Relic Stat | Unit of Measure |
 | ------------ | ------------- | ------------ |
-| vnode_gets | VNode/Gets/Rate | Operations/Seconds |
-| vnode_puts | VNode/Puts/Rate | Operations/Seconds |
 | vnode_gets_total | VNode/Gets/Total | Operations |
 | vnode_puts_total | VNode/Puts/Total | Operations |
-| vnode_index_reads | VNode/Index/Reads | Indexes/Seconds |
-| vnode_index_writes | VNode/Index/Writes | Indexes/Seconds |
-| vnode_index_deletes | VNode/Index/Deletes | Indexes/Seconds |
-| vnode_index_reads_total | VNode/Index/Reads/Total | Indexes |
-| vnode_index_writes_total | VNode/Index/Writes/Total | Indexes |
-| vnode_index_deletes_total | VNode/Index/Deletes/Total | Indexes |
-| vnode_index_writes_postings | VNode/Index/Writes/Postings | Postings/Seconds |
-| vnode_index_deletes_postings | VNode/Index/Deletes/Postings | Postings/Seconds |
-| vnode_index_writes_postings_total | VNode/Index/Writes/Postings/Total | Postings |
-| vnode_index_deletes_postings_total | VNode/Index/Deletes/Postings/Total | Postings |
-| read_repairs | Read Repairs/Rate | Repairs/Seconds |
 | read_repairs_total | Read Repairs/Total | Repairs |
 | coord_redirs_total | Node/Redirects/Total | Redirects |
-| node_gets | Node/Gets/Rate | Operations/Seconds |
 | node_gets_total | Node/Gets/Total | Operations |
 | node_get_fsm_time_mean | Node/Get/FSM/Time/Mean | Microseconds |
 | node_get_fsm_time_median | Node/Get/FSM/Time/Median | Microseconds |
 | node_get_fsm_time_95 | Node/Get/FSM/Time/95 | Microseconds |
 | node_get_fsm_time_99 | Node/Get/FSM/Time/99 | Microseconds |
 | node_get_fsm_time_100 | Node/Get/FSM/Time/100 | Microseconds |
-| node_puts | Node/Puts/Rate | Operations/Seconds |
 | node_puts_total | Node/Puts/Total | Operations |
 | node_put_fsm_time_mean | Node/Put/FSM/Time/Mean | Microseconds |
 | node_put_fsm_time_median | Node/Put/FSM/Time/Median | Microseconds |
@@ -71,54 +63,40 @@ For more information on the meaning of these metrics, please visit [docs.basho.c
 | node_get_fsm_objsize_100 | Node/Get/FSM/ObjectSize/100 | Bytes |
 | precommit_fail | Failures/Pre-commit | Failures |
 | postcommit_fail | Failures/Post-commit | Failures |
-| cpu_nprocs | CPU/Processes/Total | Processes |
-| cpu_avg1 | CPU/Processes/Average/1Minute | Processes/Seconds |
-| cpu_avg5 | CPU/Processes/Average/5Minute | Processes/Seconds |
-| cpu_avg15 | CPU/Processes/Average/15Minute | Processes/Seconds |
 | sys_process_count | Sys/Processes/Total | Processes |
 | pbc_connects_total | PBC/Connections/Total | Connections |
-| pbc_connects | PBC/Connections/Rate | Connections/Seconds |
 | pbc_active | PBC/Connections/Active | Connections |
-| executing_mappers | Mappers/Executing | Mappers |
-| mem_total | Memory/Available/Total | Bytes |
-| memory_total | Memory/Allocated/Total | Bytes |
-| mem_allocated | Memory/Allocated/Node | Bytes |
-| memory_processes | Memory/Allocated/Processes | Bytes |
-| memory_system | Memory/Allocated/System | Bytes |
-| memory_atom | Memory/Allocated/Atom | Bytes |
-| memory_code | Memory/Allocated/Code | Bytes |
-| memory_ets | Memory/Allocated/Ets | Bytes |
-| memory_atom_used | Memory/Used/Atom | Bytes |
-| memory_binary | Memory/Used/Binaries | Bytes |
 | memory_processes_used | Memory/Used/Processes | Bytes |
-| ignored_gossip_total | Gossip/Ignored  | Messages |
-| gossip_received | Gossip/Received | Messages |
-| rings_reconciled_total | Rings/Reconciled/Total | Rings |
-| rings_reconciled | Rings/Reconciled/Rate | Rings/Seconds |
-| handoff_timeouts | Hand-off Timeouts | Timeouts |
-| converge_delay_min | Converge/Delay/Min | Microseconds |
-| converge_delay_max | Converge/Delay/Max | Microseconds |
-| converge_delay_mean | Converge/Delay/Mean | Microseconds |
-| converge_delay_last | Converge/Delay/Last | Microseconds |
-| rebalance_delay_min | Re-balance/Delay/Min | Microseconds |
-| rebalance_delay_max | Re-balance/Delay/Max | Microseconds |
-| rebalance_delay_mean | Re-balance/Delay/Mean | Microseconds |
-| rebalance_delay_last | Re-balance/Delay/Last | Microseconds |
-| riak_kv_vnodes_running | KV/VNodes/Running | VNodes |
-| riak_kv_vnodeq_min | KV/VNode/Queue/Min | Messages |
-| riak_kv_vnodeq_median | KV/VNode/Queue/Median | Messages |
-| riak_kv_vnodeq_mean | KV/VNode/Queue/Mean | Messages |
-| riak_kv_vnodeq_max | KV/VNode/Queue/Max | Messages |
-| riak_kv_vnodeq_total | KV/VNode/Queue/Total | Messages |
-| riak_pipe_vnodes_running | Pipe/VNodes/Running | VNodes |
-| riak_pipe_vnodeq_min | Pipe/VNode/Queue/Min | Messages |
-| riak_pipe_vnodeq_median | Pipe/VNode/Queue/Min | Messages |
-| riak_pipe_vnodeq_mean | Pipe/VNode/Queue/Min | Messages |
-| riak_pipe_vnodeq_max | Pipe/VNode/Queue/Min | Messages |
-| riak_pipe_vnodeq_total | Pipe/VNode/Queue/Min | Messages |
-| riak_search_vnodes_running | Search/VNodes/Running | VNodes |
-| riak_search_vnodeq_min | Search/VNode/Queue/Min | Messages |
-| riak_search_vnodeq_median | Search/VNode/Queue/Median | Messages |
-| riak_search_vnodeq_mean | Search/VNode/Queue/Mean | Messages |
-| riak_search_vnodeq_max | Search/VNode/Queue/Max | Messages |
-| riak_search_vnodeq_total | Search/VNode/Queue/Total | Messages |
+| consistent_gets_total | Consistent/Gets/Total | Operations |
+| consistent_puts_total | Consistent/Puts/Total | Operations |
+| node_get_fsm_rejected_total | Node/Get/Fsm/Rejected/Total | Rejections |
+| node_gets_counter_total | Node/Gets/Counter/Total | Operations |
+| node_gets_map_total | Node/Gets/Map/Total | Operations |
+| node_gets_set_total | Node/Gets/Set/Total | Operations |
+| node_put_fsm_rejected_total | Node/Put/Fsm/Rejected/Total | Rejections |
+| node_puts_counter_total | Node/Puts/Counter/Total | Operations |
+| node_puts_map_total | Node/Puts/Map/Total | Operations |
+| node_puts_set_total | Node/Puts/Set/Total | Operations |
+| search_index_fail_count | Search/Index/Fail/Total | Failures |
+| search_index_fail_one | Search/Index/Fail/One | Failures |
+| search_index_latency_95 | Search/Index/Latency/95 | Microseconds |
+| search_index_latency_99 | Search/Index/Latency/99 | Microseconds |
+| search_index_latency_999 | Search/Index/Latency/999 | Microseconds |
+| search_index_latency_max | Search/Index/Latency/Max | Microseconds |
+| search_index_latency_median | Search/Index/Latency/Median | Microseconds |
+| search_index_latency_min | Search/Index/Latency/Min | Microseconds |
+| search_index_throughput_count | Search/Index/Throughput/Total | Operations |
+| search_index_throughtput_one | Search/Index/Throughtput/One | Operations |
+| search_query_fail_count | Search/Query/Fail/Total | Failures |
+| search_query_fail_one | Search/Query/Fail/One | Failures |
+| search_query_latency_95 | Search/Query/Latency/95 | Microseconds |
+| search_query_latency_99 | Search/Query/Latency/99 | Microseconds |
+| search_query_latency_999 | Search/Query/Latency/999 | Microseconds |
+| search_query_latency_max | Search/Query/Latency/Max | Microseconds |
+| search_query_latency_median | Search/Query/Latency/Median | Microseconds |
+| search_query_latency_min | Search/Query/Latency/Min | Microseconds |
+| search_query_throughput_count | Search/Query/Throughput/Total | Operations |
+| search_query_throughput_one | Search/Query/Throughput/One | Operations |
+| vnode_counter_update_total | Vnode/Counter/Update/Total | Operations |
+| vnode_map_update_total | Vnode/Map/Update/Total | Operations |
+| vnode_set_update_total | Vnode/Set/Update/Total | Operations |
