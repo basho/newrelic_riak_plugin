@@ -49,7 +49,7 @@ module RiakAgent
       end
 
       @metrics = [
-        Metric.new('vnode_gets_total', 'VNode/Gets/Total', 'TOperations'),
+        Metric.new('vnode_gets_total', 'VNode/Gets/Total', 'Operations'),
         Metric.new('vnode_puts_total', 'VNode/Puts/Total', 'Operations'),
         Metric.new('vnode_gets', 'VNode/Gets/1Min', 'Operations/Min'),
         Metric.new('vnode_puts', 'VNode/Puts/1Min', 'Operations/Min'),
@@ -117,7 +117,36 @@ module RiakAgent
         Metric.new('search_query_throughput_one', 'Search/Query/Throughput/One', 'Operations/Min'),
         Metric.new('vnode_counter_update_total', 'VNode/Counter/Update/Total', 'Operations'),
         Metric.new('vnode_map_update_total', 'VNode/Map/Update/Total', 'Operations'),
-        Metric.new('vnode_set_update_total', 'VNode/Set/Update/Total', 'Operations')
+        Metric.new('vnode_set_update_total', 'VNode/Set/Update/Total', 'Operations'),
+        Metric.new('node_get_fsm_map_objsize_100', 'Node/Map/Get/ObjectSize/100', 'Bytes'),
+        Metric.new('node_get_fsm_map_objsize_99', 'Node/Map/Get/ObjectSize/99', 'Bytes'),
+        Metric.new('node_get_fsm_map_objsize_95', 'Node/Map/Get/ObjectSize/95', 'Bytes'),
+        Metric.new('node_get_fsm_map_objsize_mean', 'Node/Map/Get/ObjectSize/Mean', 'Bytes'),
+        Metric.new('node_get_fsm_map_objsize_median', 'Node/Map/Get/ObjectSize/Median', 'Bytes'),
+        Metric.new('node_get_fsm_map_time_100', 'Node/Map/Get/Latency/100', 'Microseconds'),
+        Metric.new('node_get_fsm_map_time_99', 'Node/Map/Get/Latency/95', 'Microseconds'),
+        Metric.new('node_get_fsm_map_time_95', 'Node/Map/Get/Latency/95', 'Microseconds'),
+        Metric.new('node_get_fsm_map_time_mean', 'Node/Map/Get/Latency/Mean', 'Microseconds'),
+        Metric.new('node_get_fsm_map_time_median', 'Node/Map/Get/Latency/Median', 'Microseconds'),
+        Metric.new('node_gets_map', 'Node/Map/Get/PerMin', 'Ops/Min'),
+        Metric.new('node_put_fsm_map_time_100', 'Node/Map/Put/Latency/100', 'Microseconds'),
+        Metric.new('node_put_fsm_map_time_99', 'Node/Map/Put/Latency/95', 'Microseconds'),
+        Metric.new('node_put_fsm_map_time_95', 'Node/Map/Put/Latency/95', 'Microseconds'),
+        Metric.new('node_put_fsm_map_time_mean', 'Node/Map/Put/Latency/Mean', 'Microseconds'),
+        Metric.new('node_put_fsm_map_time_median', 'Node/Map/Put/Latency/Median', 'Microseconds'),
+        Metric.new('node_puts_map', 'Node/Map/Put/PerMin', 'Ops/Min'),
+        Metric.new('object_map_merge', 'Node/Map/Merge/PerMin', 'Ops/Min'),
+        Metric.new('object_map_merge_time_100', 'Node/Map/Merge/Latency/100', 'Microseconds'),
+        Metric.new('object_map_merge_time_99', 'Node/Map/Merge/Latency/95', 'Microseconds'),
+        Metric.new('object_map_merge_time_95', 'Node/Map/Merge/Latency/95', 'Microseconds'),
+        Metric.new('object_map_merge_time_mean', 'Node/Map/Merge/Latency/Mean', 'Microseconds'),
+        Metric.new('object_map_merge_time_median', 'Node/Map/Merge/Latency/Median', 'Microseconds'),
+        Metric.new('vnode_map_update', 'VNode/Map/Update/PerMin', 'Ops/Min'),
+        Metric.new('vnode_map_update_time_100', 'VNode/Map/Update/Latency/100', 'Microseconds'),
+        Metric.new('vnode_map_update_time_95', 'VNode/Map/Update/Latency/95', 'Microseconds'),
+        Metric.new('vnode_map_update_time_99', 'VNode/Map/Update/Latency/95', 'Microseconds'),
+        Metric.new('vnode_map_update_time_mean', 'VNode/Map/Update/Latency/Mean', 'Microseconds'),
+        Metric.new('vnode_map_update_time_median', 'VNode/Map/Update/Latency/Median', 'Microseconds')
       ]
     end
 
