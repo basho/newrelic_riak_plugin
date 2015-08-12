@@ -111,6 +111,7 @@ module RiakAgent
         Metric.new('search_query_latency_99', 'Search/Query/Latency/99', 'Microseconds'),
         Metric.new('search_query_latency_999', 'Search/Query/Latency/999', 'Microseconds'),
         Metric.new('search_query_latency_max', 'Search/Query/Latency/Max', 'Microseconds'),
+        Metric.new('search_query_latency_mean', 'Search/Query/Latency/Mean', 'Microseconds'),
         Metric.new('search_query_latency_median', 'Search/Query/Latency/Median', 'Microseconds'),
         Metric.new('search_query_latency_min', 'Search/Query/Latency/Min', 'Microseconds'),
         Metric.new('search_query_throughput_count', 'Search/Query/Throughput/Total', 'Operations'),
