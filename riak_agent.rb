@@ -138,6 +138,11 @@ module RiakAgent
         Metric.new('vnode_counter_update_total', 'VNode/Counter/Update/Total', 'Operations'),
         Metric.new('vnode_gets', 'VNode/Gets/1Min', 'Operations/Min'),
         Metric.new('vnode_gets_total', 'VNode/Gets/Total', 'Operations'),
+        Metric.new('vnode_get_fsm_time_100', 'VNode/Get/FSM/Time/100', 'Microseconds'),
+        Metric.new('vnode_get_fsm_time_95', 'VNode/Get/FSM/Time/95', 'Microseconds'),
+        Metric.new('vnode_get_fsm_time_99', 'VNode/Get/FSM/Time/99', 'Microseconds'),
+        Metric.new('vnode_get_fsm_time_mean', 'VNode/Get/FSM/Time/Mean', 'Microseconds'),
+        Metric.new('vnode_get_fsm_time_median', 'VNode/Get/FSM/Time/Median', 'Microseconds'),
         Metric.new('vnode_map_update', 'VNode/Map/Update/PerMin', 'Ops/Min'),
         Metric.new('vnode_map_update_time_100', 'VNode/Map/Update/Latency/100', 'Microseconds'),
         Metric.new('vnode_map_update_time_95', 'VNode/Map/Update/Latency/95', 'Microseconds'),
@@ -147,6 +152,11 @@ module RiakAgent
         Metric.new('vnode_map_update_total', 'VNode/Map/Update/Total', 'Operations'),
         Metric.new('vnode_puts', 'VNode/Puts/1Min', 'Operations/Min'),
         Metric.new('vnode_puts_total', 'VNode/Puts/Total', 'Operations'),
+        Metric.new('vnode_put_fsm_time_100', 'VNode/Put/FSM/Time/100', 'Microseconds'),
+        Metric.new('vnode_put_fsm_time_95', 'VNode/Put/FSM/Time/95', 'Microseconds'),
+        Metric.new('vnode_put_fsm_time_99', 'VNode/Put/FSM/Time/99', 'Microseconds'),
+        Metric.new('vnode_put_fsm_time_mean', 'VNode/Put/FSM/Time/Mean', 'Microseconds'),
+        Metric.new('vnode_put_fsm_time_median', 'VNode/Put/FSM/Time/Median', 'Microseconds'),
         Metric.new('vnode_set_update_total', 'VNode/Set/Update/Total', 'Operations')
       ]
     end

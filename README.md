@@ -97,6 +97,16 @@ For more information on the meaning of these metrics, please visit [docs.basho.c
 | sys_process_count | Sys/Processes/Total | Processes |
 | vnode_counter_update_total | Vnode/Counter/Update/Total | Operations |
 | vnode_gets_total | VNode/Gets/Total | Operations |
+| vnode_get_fsm_time_100 | VNode/Get/FSM/Time/100 | Microseconds |
+| vnode_get_fsm_time_95 | VNode/Get/FSM/Time/95 |Microseconds |
+| vnode_get_fsm_time_99 | VNode/Get/FSM/Time/99 | Microseconds |
+| vnode_get_fsm_time_mean | VNode/Get/FSM/Time/Mean | Microseconds |
+| vnode_get_fsm_time_median | VNode/Get/FSM/Time/Median | Microseconds |
 | vnode_map_update_total | Vnode/Map/Update/Total | Operations |
 | vnode_puts_total | VNode/Puts/Total | Operations |
+| vnode_put_fsm_time_100 | VNode/Put/FSM/Time/100 | Microseconds |
+| vnode_put_fsm_time_95 | VNode/Put/FSM/Time/95 |Microseconds |
+| vnode_put_fsm_time_99 | VNode/Put/FSM/Time/99 | Microseconds |
+| vnode_put_fsm_time_mean | VNode/Put/FSM/Time/Mean | Microseconds |
+| vnode_put_fsm_time_median | VNode/Put/FSM/Time/Median | Microseconds |
 | vnode_set_update_total | Vnode/Set/Update/Total | Operations |
